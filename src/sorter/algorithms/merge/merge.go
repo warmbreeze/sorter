@@ -15,7 +15,7 @@ func mergeSort(values, merged []int, start, end int) {
 	}
 
 	length := end - start
-	var mid = length>>1 + start
+	var mid = (length >> 1) + start
 	var leftStart, leftEnd = start, mid
 	var rightStart, rightEnd = mid + 1, end
 	mergeSort(values, merged, leftStart, leftEnd)

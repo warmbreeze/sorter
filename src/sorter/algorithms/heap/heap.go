@@ -1,5 +1,9 @@
 package heap
 
+import (
+	_ "fmt"
+)
+
 func HeapSort(values []int) {
 	// Build Max Heap in array values.
 	buildMaxHeap(values)
@@ -34,14 +38,18 @@ func maxHeapAdjust(values []int, index, heapSize int) {
 	right := getRightChildIndex(index)
 
 	var adjustIndex = index
-	if left < heapSize && values[left] > values[index] {
-		values[index], values[left] = values[left], values[index]
+	if left < heapSize && values[left] > values[adjustIndex] {
+		//		values[index], values[left] = values[left], values[index]
+		adjustIndex = left
 	}
-	if right < heapSize && values[right] > values[index] {
-		values[index], values[right] = values[right], values[index]
+	if right < heapSize && values[right] > values[adjustIndex] {
+		//		values[index], values[right] = values[right], values[index]
+		adjustIndex = right
 	}
 
+	//	fmt.Printf("%d - %d\n", index, adjustIndex)
 	if adjustIndex != index {
+		values[adjustIndex], values[index] = values[index], values[adjustIndex]
 		maxHeapAdjust(values, adjustIndex, heapSize)
 	}
 
@@ -52,9 +60,9 @@ func getLastParentIndex(index int) int {
 }
 
 func getLeftChildIndex(index int) int {
-	return index<<1 + 1
+	return (index << 1) + 1
 }
 
 func getRightChildIndex(index int) int {
-	return index<<2 + 2
+	return (index << 1) + 2
 }

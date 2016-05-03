@@ -3,18 +3,18 @@ package heap
 import "testing"
 
 func TestHeapSort1(t *testing.T) {
-	values := []int{5, 4, 3, 2, 1, 0}
+	values := []int{6, 5, 4, 3, 2, 1, 0}
 	HeapSort(values)
 	if values[0] != 0 || values[1] != 1 || values[2] != 2 || values[3] != 3 ||
-		values[4] != 4 || values[5] != 5 {
+		values[4] != 4 || values[5] != 5 || values[6] != 6 {
 		t.Error("HeapSort() failed, Got", values, "Excepted 0 1 2 3 4 5")
 	}
 }
 
 func TestHeapSort2(t *testing.T) {
-	values := []int{2, 2, 1}
+	values := []int{2, 0, 1}
 	HeapSort(values)
-	if values[0] != 1 || values[1] != 2 || values[2] != 2 {
+	if values[0] != 0 || values[1] != 1 || values[2] != 2 {
 		t.Error("HeapSort() failed, Got", values, "Excepted 1 2 2")
 	}
 }
